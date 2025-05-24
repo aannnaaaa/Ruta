@@ -1,14 +1,7 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render
 
+def about_view(request):
+    return render(request, 'about_page/about.html')
 
-def home_view(request):
-    """
-    Динамическая главная страница:
-    - Незарегистрированные -> about_page
-    - Зарегистрированные -> профиль
-    """
-    if request.user.is_authenticated:
-        return redirect('profiles:profile')
-    else:
-        # Показываем about_page для незарегистрированных пользователей
-        return render(request, 'about_page/about.html')
+def routes_view(request):
+    return render(request, 'about_page/routes.html')

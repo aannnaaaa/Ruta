@@ -22,7 +22,7 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="#">О сервисе</a>
+                        <a class="nav-link" href="{% url 'about_page:about' %}">О сервисе</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Популярные маршруты</a>
@@ -57,7 +57,7 @@
                 </div>
                 <div class="col-md-4 mb-3">
                     <ul class="footer-links">
-                        <li><a href="#">О сервисе</a></li>
+                        <li><a href="{% url 'about_page:about' %}">О сервисе</a></li>
                         <li><a href="#">Популярные маршруты</a></li>
                         <li><a href="{% url 'blog:blog' %}">Блог</a></li>
                     </ul>
