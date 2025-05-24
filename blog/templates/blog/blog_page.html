@@ -1,0 +1,31 @@
+{% extends "base_layout.html" %}
+{% load static %}
+{% block title %}Блог | Ruta{% endblock title %}
+{% block content %}
+<div class="container mt-5">
+    <h2 class="mb-4">Популярные посты</h2>
+    <div class="row">
+        {% for post in posts %}
+        <div class="col-12 col-md-6 col-lg-4 mb-4">
+            <div class="card blog-card h-100">
+                <div class="row g-0">
+                    <div class="col-12">
+                        <img src="{{ post.image.url }}" class="img-fluid rounded-top blog-image" alt="{{ post.title }}">
+                    </div>
+                    <div class="col-12">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <a href="{% url 'post_detail' post.id %}" class="btn btn-sm btn-success">Узнать больше</a>
+                                <small class="text-muted">{{ post.created_at|date:"d февраля Y года" }}</small>
+                            </div>
+                            <h5 class="card-title">{{ post.tags }}</h5>
+                            <p class="card-text">{{ post.description|truncatechars:150 }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock content %}

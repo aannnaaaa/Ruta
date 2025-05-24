@@ -1,0 +1,20 @@
+{% extends "base_layout.html" %}
+{% load static %}
+{% block title %}Главная | Ruta{% endblock title %}
+{% block content %}
+<div class="container mt-5">
+    <div class="text-center">
+        <h1>Добро пожаловать в Ruta!</h1>
+        <p class="lead">Планируйте свои путешествия легко и удобно</p>
+        <div class="mt-4">
+            {% if user.is_authenticated %}
+                <a href="{% url 'profiles:profile' %}" class="btn btn-primary me-3">Мой профиль</a>
+                <a href="{% url 'blog:blog' %}" class="btn btn-outline-primary">Блог</a>
+            {% else %}
+                <a href="{% url 'auth_pages:login' %}" class="btn btn-primary me-3">Войти</a>
+                <a href="{% url 'auth_pages:registration' %}" class="btn btn-outline-primary">Регистрация</a>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock content %}
