@@ -28,7 +28,7 @@
                         <a class="nav-link" href="#">Популярные маршруты</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="blog/blog_page">Блог</a>
+                        <a class="nav-link" href="{% url 'blog:blog' %}">Блог</a>
                     </li>
                     <li class="nav-item">
                         {% if user.is_authenticated %}
@@ -59,7 +59,7 @@
                     <ul class="footer-links">
                         <li><a href="#">О сервисе</a></li>
                         <li><a href="#">Популярные маршруты</a></li>
-                        <li><a href="blog/blog_page">Блог</a></li>
+                        <li><a href="{% url 'blog:blog' %}">Блог</a></li>
                     </ul>
                 </div>
                 <div class="col-md-4 mb-3">

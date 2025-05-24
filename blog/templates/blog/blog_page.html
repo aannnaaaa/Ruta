@@ -15,7 +15,7 @@
                     <div class="col-12">
                         <div class="card-body">
                             <div class="d-flex justify-content-between align-items-center mb-2">
-                                <a href="{% url 'post_detail' post.id %}" class="btn btn-sm btn-success">Узнать больше</a>
+                                <a href="{% url 'blog:post_detail' post.id %}" class="btn btn-sm btn-success">Узнать больше</a>
                                 <small class="text-muted">{{ post.created_at|date:"d февраля Y года" }}</small>
                             </div>
                             <h5 class="card-title">{{ post.tags }}</h5>
