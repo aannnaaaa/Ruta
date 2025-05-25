@@ -22,7 +22,11 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'about_page:about' %}">О сервисе</a>
+                        {% if user.is_authenticated %}
+                            <a href="{% url 'routes:create_route_step1' %}" class="nav-link">Создать маршрут</a>
+                        {% else %}
+                            <a href="{% url 'about_page:about' %}" class="nav-link">О сервисе</a>
+                        {% endif %}
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Популярные маршруты</a>

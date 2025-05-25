@@ -41,6 +41,9 @@ DEFAULT_FROM_EMAIL = 'your-email@example.com'
 
 # Перенаправление после входа
 LOGIN_REDIRECT_URL = 'profiles:profile'
+
+
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -53,7 +56,9 @@ INSTALLED_APPS = [
     'auth_pages',
     'about_page',
     'blog.apps.BlogConfig',
-    'profiles',
+    'profiles.apps.ProfilesConfig',
+    'routes',
+    'widget_tweaks',
 ]
 
 MIDDLEWARE = [

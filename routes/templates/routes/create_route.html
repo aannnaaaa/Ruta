@@ -1,0 +1,298 @@
+{% extends "base_layout.html" %}
+{% load static %}
+{% load widget_tweaks %}
+
+{% block title %}Создать маршрут: Шаг 1 | Ruta{% endblock title %}
+
+{% block extra_css %}
+<style>
+    .step-container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 2rem 1rem;
+    }
+
+    .step-header {
+        text-align: center;
+        margin-bottom: 2rem;
+    }
+
+    .step-title {
+        color: #2c5530;
+        font-weight: 600;
+        font-size: 1.8rem;
+        margin-bottom: 1rem;
+    }
+
+    .step-indicator {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 0.5rem;
+        margin-bottom: 2rem;
+    }
+
+    .step-number {
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 600;
+        font-size: 0.9rem;
+    }
+
+    .step-number.active {
+        background-color: #4db6ac;
+        color: white;
+    }
+
+    .step-number.inactive {
+        background-color: #e0e0e0;
+        color: #9e9e9e;
+    }
+
+    .step-separator {
+        width: 20px;
+        height: 2px;
+        background-color: #e0e0e0;
+    }
+
+    .form-section {
+        background: white;
+        border-radius: 12px;
+        padding: 2rem;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+        margin-bottom: 2rem;
+    }
+
+    .section-title {
+        color: #2c5530;
+        font-size: 1.2rem;
+        font-weight: 600;
+        margin-bottom: 1.5rem;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+    .section-number {
+        background-color: #4db6ac;
+        color: white;
+        width: 24px;
+        height: 24px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.8rem;
+        font-weight: 600;
+    }
+
+    .form-group {
+        margin-bottom: 1.5rem;
+    }
+
+    .form-label {
+        color: #2c5530;
+        font-weight: 500;
+        margin-bottom: 0.5rem;
+        display: block;
+    }
+
+    .form-control {
+        border: 1px solid #e0e0e0;
+        border-radius: 8px;
+        padding: 0.75rem 1rem;
+        font-size: 0.95rem;
+        transition: all 0.2s;
+        width: 100%;
+    }
+
+    .form-control:focus {
+        border-color: #4db6ac;
+        box-shadow: 0 0 0 3px rgba(77, 182, 172, 0.1);
+        outline: none;
+    }
+
+    .file-upload-area {
+        border: 2px dashed #e0e0e0;
+        border-radius: 8px;
+        padding: 2rem;
+        text-align: center;
+        transition: all 0.2s;
+        cursor: pointer;
+        background-color: #fafafa;
+    }
+
+    .file-upload-area:hover {
+        border-color: #4db6ac;
+        background-color: #f0f9f8;
+    }
+
+    .file-upload-icon {
+        font-size: 2rem;
+        color: #9e9e9e;
+        margin-bottom: 0.5rem;
+    }
+
+    .file-upload-text {
+        color: #4db6ac;
+        font-weight: 500;
+        margin-bottom: 0.25rem;
+    }
+
+    .file-upload-hint {
+        color: #9e9e9e;
+        font-size: 0.85rem;
+    }
+
+    .btn-group {
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+        margin-top: 2rem;
+    }
+
+    .btn {
+        padding: 0.75rem 2rem;
+        border-radius: 8px;
+        font-weight: 500;
+        text-decoration: none;
+        border: none;
+        cursor: pointer;
+        transition: all 0.2s;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+    .btn-primary {
+        background-color: #4db6ac;
+        color: white;
+    }
+
+    .btn-primary:hover {
+        background-color: #26a69a;
+        transform: translateY(-1px);
+    }
+
+    .btn-secondary {
+        background-color: transparent;
+        color: #757575;
+        border: 1px solid #e0e0e0;
+    }
+
+    .btn-secondary:hover {
+        background-color: #f5f5f5;
+        color: #424242;
+    }
+
+    .alert {
+        border-radius: 8px;
+        border: none;
+        padding: 1rem 1.25rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .alert-success {
+        background-color: #e8f5e8;
+        color: #2e7d32;
+    }
+
+    .alert-danger {
+        background-color: #ffebee;
+        color: #c62828;
+    }
+</style>
+{% endblock extra_css %}
+
+{% block content %}
+<div class="step-container">
+    <div class="step-header">
+        <h1 class="step-title">Создайте свой маршрут</h1>
+        <div class="step-indicator">
+            <div class="step-number active">1</div>
+            <div class="step-separator"></div>
+            <div class="step-number inactive">2</div>
+            <div class="step-separator"></div>
+            <div class="step-number inactive">3</div>
+        </div>
+    </div>
+
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert {% if message.tags == 'success' %}alert-success{% else %}alert-danger{% endif %} alert-dismissible fade show" role="alert">
+                {{ message }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        {% endfor %}
+    {% endif %}
+
+    <form method="POST" enctype="multipart/form-data" id="route-step1-form">
+        {% csrf_token %}
+
+        <div class="form-section">
+            <h2 class="section-title">
+                <span class="section-number">1</span>
+                Основная информация
+            </h2>
+
+            <div class="form-group">
+                <label for="{{ form.title.id_for_label }}" class="form-label">Название маршрута</label>
+                {{ form.title }}
+                {% if form.title.errors %}
+                    <div class="text-danger">{{ form.title.errors }}</div>
+                {% endif %}
+            </div>
+
+            <div class="form-group">
+                <label for="{{ form.description.id_for_label }}" class="form-label">Описание</label>
+                {{ form.description }}
+                {% if form.description.errors %}
+                    <div class="text-danger">{{ form.description.errors }}</div>
+                {% endif %}
+            </div>
+
+            <div class="form-group">
+                <label for="{{ form.photo.id_for_label }}" class="form-label">Обложка</label>
+                <div class="file-upload-area" onclick="document.getElementById('{{ form.photo.id_for_label }}').click();">
+                    <div class="file-upload-icon">📷</div>
+                    <div class="file-upload-text">Загрузить обложку</div>
+                    <div class="file-upload-hint">PNG, JPG до 5MB</div>
+                </div>
+                {{ form.photo|add_class:"d-none" }}
+                {% if form.photo.errors %}
+                    <div class="text-danger">{{ form.photo.errors }}</div>
+                {% endif %}
+            </div>
+        </div>
+
+        <div class="btn-group">
+            <a href="{% url 'profiles:profile' %}" class="btn btn-secondary">
+                ← Отмена
+            </a>
+            <button type="submit" class="btn btn-primary">
+                Продолжить →
+            </button>
+        </div>
+    </form>
+</div>
+
+<script>
+document.getElementById('{{ form.photo.id_for_label }}').addEventListener('change', function(e) {
+    const file = e.target.files[0];
+    const uploadArea = document.querySelector('.file-upload-area');
+    if (file) {
+        uploadArea.innerHTML = `
+            <div class="file-upload-icon">✓</div>
+            <div class="file-upload-text">Файл выбран: ${file.name}</div>
+            <div class="file-upload-hint">Нажмите, чтобы изменить</div>
+        `;
+        uploadArea.style.borderColor = '#4db6ac';
+        uploadArea.style.backgroundColor = '#f0f9f8';
+    }
+});
+</script>
+{% endblock content %}

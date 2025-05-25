@@ -10,7 +10,7 @@
                        <img src="{% static 'images/user-icon.png' %}" alt="User Avatar" class="rounded-circle" style="width: 100px; height: 100px;">
                        <h1 class="mt-3">{{ request.user.username }}</h1>
                        <p class="mb-4">{{ request.user.email }}</p>
-                       <a href="#" class="btn btn-outline-light me-2">Редактировать профиль</a>
+                       <a href="{% url 'profiles:edit_profile' %}" class="btn btn-outline-light me-2">Редактировать профиль</a>
                        <a href="{% url 'profiles:logout' %}" class="btn btn-primary custom-button">Выйти</a>
                    </div>
                    <div class="row mt-4">

@@ -11,5 +11,6 @@ urlpatterns = [
     path('auth/', include('auth_pages.urls')),
     path('profile/', include('profiles.urls')),
     path('blog/', include('blog.urls')),
-    path('about/', include('about_page.urls')),
+    path('routes/', include('routes.urls')),
+    path('', include('about_page.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
